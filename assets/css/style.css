@@ -623,6 +623,7 @@ footer
         text-align: center;
         opacity: 0.8;
         z-index: 2;
+        transition: all 0.3s;
     }
     .aside__button i{
         height: 48px;
@@ -647,6 +648,9 @@ footer
     #aside__check:checked ~ .aside{
         transform: translateX(0);
         opacity: 1;
+    }
+    #aside__check:checked ~ .aside__button {
+        background-color: red;
     }
     #aside__check:checked ~ .aside__button i{
         transform: rotate(-45deg);

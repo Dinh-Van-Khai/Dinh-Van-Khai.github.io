@@ -53,7 +53,7 @@
             <div class="grid">
                 <div class=" grid__row">
                     <div class="grid__col-9 tablet__col-full mobile__col-full">
-                        <div class="grid__row">
+                        <div class="grid__row new-container">
                             <div class="grid__col-full ">
                                 <a href="" id="news1" class="news">
                                     <div class="news__img"></div>
@@ -219,44 +219,45 @@
             const signUpCloses = document.querySelectorAll('.modal-sign-up .js-sign-close')
             const modalSignIn = document.querySelector('.modal-sign-in')
             const modalSignUp = document.querySelector('.modal-sign-up')
-            function showSignIn() {
-                modalSignIn.classList.add('open')
-            }
-            function showSignUp() {
-                modalSignUp.classList.add('open')
-            }
-            function closeSignIn() {
-                modalSignIn.classList.remove('open')
-            }
-            function closeSignUp() {
-                modalSignUp.classList.remove('open')
-            }
-            for (const signIn of signIns){
-                signIn.addEventListener('click',showSignIn);
-            }
-            for (const signUp of signUps){
-                signUp.addEventListener('click',showSignUp);
-            }
-            for (const signInClose of signInCloses){
-                signInClose.addEventListener('click',closeSignIn);
-            }
-            for (const signUpClose of signUpCloses){
-                signUpClose.addEventListener('click',closeSignUp);
-            }
-            // function isShow(clickWhats,showWhat){
-            //     for(const clickWhat of clickWhats){
-            //         clickWhat.addEventListener('click',showWhat.classList.add('open'))
-            //     }
+            // function showSignIn() {
+            //     modalSignIn.classList.add('open')
             // }
-            // function isClose(clickWhats,closeWhat){
-            //     for(const clickWhat of clickWhats){
-            //         clickWhat.addEventListener('click',closeWhat.classList.remove('open'))
-            //     }
+            // function showSignUp() {
+            //     modalSignUp.classList.add('open')
             // }
-            // isShow(signIns,modalSignIn)
-            // isShow(signUps,modalSignUp)
-            // isClose(signInCloses,modalSignIn)
-            // isClose(signUpCloses,modalSignUp)
+            // function closeSignIn() {
+            //     modalSignIn.classList.remove('open')
+            // }
+            // function closeSignUp() {
+            //     modalSignUp.classList.remove('open')
+            // }
+            // for (const signIn of signIns){
+            //     signIn.addEventListener('click',showSignIn);
+            // }
+            // for (const signUp of signUps){
+            //     signUp.addEventListener('click',showSignUp);
+            // }
+            // for (const signInClose of signInCloses){
+            //     signInClose.addEventListener('click',closeSignIn);
+            // }
+            // for (const signUpClose of signUpCloses){
+            //     signUpClose.addEventListener('click',closeSignUp);
+            // }
+            function isShow(clickWhats,showWhat){
+                for(const clickWhat of clickWhats){
+                    clickWhat.addEventListener('click',function(){showWhat.classList.add('open')} )
+                }
+            }
+            function isClose(clickWhats,closeWhat){
+                for(const clickWhat of clickWhats){
+                    clickWhat.addEventListener('click',function(){closeWhat.classList.remove('open')})
+                }
+            }
+            isShow(signIns,modalSignIn)
+            isShow(signUps,modalSignUp)
+            isClose(signInCloses,modalSignIn)
+            isClose(signUpCloses,modalSignUp)
         </script>
+        <script src="./assets/js/news.js"></script>
     </body>
 </html>

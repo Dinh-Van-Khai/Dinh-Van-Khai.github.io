@@ -3,24 +3,27 @@
         "href":"",
         "id":1,
         "head":"abc ",
-        "img":"",
+        "img":"/assets/img/header.jpg",
         "color":"red",
-        "size":1
+        "size":1,
+        "conten":""
     },
     {
         "href":"",
         "id":2,
         "head":"xyz",
-        "img":"",
-        "color":"red",
-        "size":2
+        "img":"/assets/img/header.jpg",
+        "color":"blue",
+        "size":2,
+        "conten":""
     },
     {
         "href":"",
         "id":3,
         "head":"pqr",
-        "img":"",
+        "img":"/assets/img/header.jpg",
         "color":"red",
-        "size":1
+        "size":3,
+        "conten":""
     }
 ]

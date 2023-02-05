@@ -330,28 +330,7 @@ nav .right li:hover
 .news:hover .news__head{
     text-decoration: underline;
 }
-#news1{
-    background: linear-gradient(0, green, transparent 40%),url(/assets/img/header.jpg) center / cover no-repeat;
-}
-#news2{
-    background: linear-gradient(0, blue, transparent 40%),url(/assets/img/header.jpg) center / cover no-repeat;
-}
-#news3{
-    background: linear-gradient(0, red, transparent 40%),url(/assets/img/header.jpg) center / cover no-repeat;
-}
-#news4{
-    background: linear-gradient(0,purple, transparent 40%),url(/assets/img/header.jpg) center / cover no-repeat;
-}
-#news5{
-    background: linear-gradient(0,black, transparent 40%),url(/assets/img/header.jpg) center / cover no-repeat;
-}
-#news6{
-    background: linear-gradient(0,pink, transparent 40%),url(/assets/img/header.jpg) center / cover no-repeat;
-}
-#news7{
-    background: linear-gradient(0, brown, transparent 40%),url(/assets/img/header.jpg) center / cover no-repeat;
-}
-#news8{
+#my-news{
     background: linear-gradient(0, green, transparent 40%),url(/assets/img/header.jpg) center / cover no-repeat;
 }
 .grid__col-9-3 .news__img{

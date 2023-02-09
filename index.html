@@ -31,9 +31,13 @@
                 <label for="hide-menu__check" class="button">
                     <i class="fa-solid fa-list"></i>
                 </label>
-                <div class="search">
-                    <input id="search__input" type="search" name="search" placeholder="Search...">
-                    <label for="search__input" class="search__icon fa-solid fa-magnifying-glass"></label>
+                <div class="search-container">
+                    <div class="search">
+                        <input id="search__input" type="search" name="search" placeholder="Search...">
+                        <label for="search__input" class="search__icon fa-solid fa-magnifying-glass"></label>
+                    </div>
+                    <ul class="search__list"></ul>
+                    <div class="aft"></div>
                 </div>
             </div>
 
@@ -43,8 +47,8 @@
             </label>
             <label for="hide-sign__check" class="hide-sign__overlay"></label>
             <ul class="right">
-                <li class="js-sign-in">Sign in</li>
-                <li class="js-sign-up">Sign up</li>
+                <li class="js-sign-in"><label for="hide-sign__check">Sign in</label></li>
+                <li class="js-sign-up"><label for="hide-sign__check">Sign up</label></li>
             </ul>
             
         </nav>
@@ -64,14 +68,16 @@
                         </div>
                     </div>
                     <div class="grid__col-3 tablet__col-6 mobile__col-full">
-                        <input type="checkbox" name="" id="aside__check">
-                        <label for="aside__check" class="aside__overlay"></label>
-                        <ul class="aside">
-                            <li class="aside__item"><a href="#">Home</a></li>
-                            <li class="aside__item"><a href="#conten">Conten</a></li>
-                            <li class="aside__item"><a href="#footer">Footer</a></li>
-                        </ul>
-                        <label for="aside__check" class="aside__button"><i class="fa-solid fa-plus"></i></label>      
+                        <aside>
+                            <ul class="aside__list">
+                                <li class="aside__item"><a href="#">Home</a></li>
+                                <li class="aside__item"><a href="#conten">Conten</a></li>
+                                <ul class="aside__item--news-list"></ul>
+                                <li class="aside__item"><a href="#footer">Footer</a></li>
+                            </ul>
+                        </aside>
+                        <div class="modal__overlay"></div>
+                        <div class="aside__button"><i class="fa-solid fa-plus"></i></div>      
                     </div>
                 </div>
             </div>
@@ -138,39 +144,10 @@
         </div>
 
         <script>
-            const signIns = document.querySelectorAll('.js-sign-in')
-            const signUps = document.querySelectorAll('.js-sign-up')
-            const signInCloses = document.querySelectorAll('.modal-sign-in .js-sign-close')
-            const signUpCloses = document.querySelectorAll('.modal-sign-up .js-sign-close')
-            const modalSignIn = document.querySelector('.modal-sign-in')
-            const modalSignUp = document.querySelector('.modal-sign-up')
-            // function showSignIn() {
-            //     modalSignIn.classList.add('open')
-            // }
-            // function showSignUp() {
-            //     modalSignUp.classList.add('open')
-            // }
-            // function closeSignIn() {
-            //     modalSignIn.classList.remove('open')
-            // }
-            // function closeSignUp() {
-            //     modalSignUp.classList.remove('open')
-            // }
-            // for (const signIn of signIns){
-            //     signIn.addEventListener('click',showSignIn);
-            // }
-            // for (const signUp of signUps){
-            //     signUp.addEventListener('click',showSignUp);
-            // }
-            // for (const signInClose of signInCloses){
-            //     signInClose.addEventListener('click',closeSignIn);
-            // }
-            // for (const signUpClose of signUpCloses){
-            //     signUpClose.addEventListener('click',closeSignUp);
-            // }
+
             function isShow(clickWhats,showWhat){
                 for(const clickWhat of clickWhats){
-                    clickWhat.addEventListener('click',function(){showWhat.classList.add('open')} )
+                    clickWhat.addEventListener('click',function(){showWhat.classList.add('open');console.log('abc')} )
                 }
             }
             function isClose(clickWhats,closeWhat){
@@ -178,6 +155,19 @@
                     clickWhat.addEventListener('click',function(){closeWhat.classList.remove('open')})
                 }
             }
+
+            const signIns = document.querySelectorAll('.js-sign-in')
+            const signUps = document.querySelectorAll('.js-sign-up')
+            const signInCloses = document.querySelectorAll('.modal-sign-in .js-sign-close')
+            const signUpCloses = document.querySelectorAll('.modal-sign-up .js-sign-close')
+            const modalSignIn = document.querySelector('.modal-sign-in')
+            const modalSignUp = document.querySelector('.modal-sign-up')
+
+            const aside = document.querySelector('aside')
+            const asideButton = document.querySelector('.aside__button')
+            asideButton.addEventListener('click',function(){aside.classList.toggle('open')})
+            aside.addEventListener('click',function(){aside.classList.toggle('open')})
+
             isShow(signIns,modalSignIn)
             isShow(signUps,modalSignUp)
             isClose(signInCloses,modalSignIn)

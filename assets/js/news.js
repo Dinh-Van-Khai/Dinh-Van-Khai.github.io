@@ -1,13 +1,17 @@
+const newsSlide=document.querySelector('.news-slide')
 const newsContainer=document.querySelector('.new-container')
 const newsList=document.querySelector('.aside__item--news-list')
+const slideDotContainer=document.querySelector('.slide-dot__container')
+var maxSlide=0;
 fetch("../data/news.json")
     .then(function(response){
         return response.json()
     })
     .then(function(json){
+        var newsSlidehtml=``
         var newsListhtml=``
         var newsContainerhtml=``
-        json.forEach(news => {
+        json.forEach((news,index) => {
             var gridSize=''
             switch(news.size){
                 case 1:
@@ -22,18 +26,56 @@ fetch("../data/news.json")
                 default:
                     gridSize='grid__col-9-3 mobile__col-6'
             }
+            maxSlide++
+            newsSlidehtml+=`
+                <div class="grid__col-full news-slide__item">
+                    <a href="${news.href}" class="news" title="${news.head}" style="background: linear-gradient(90deg, ${news.color} 25%, transparent 50%),url(${news.img}) right / 75% no-repeat;">
+                        <div class="news__img"></div>
+                        <div class="news-slide__head">
+                            <h4>${news.head}</h4>
+                        </div>
+                    </a>
+                </div>`
             newsListhtml+=`
                 <li class="aside__item2"><a href="#news${news.id}">${news.head}</a></li>`
             newsContainerhtml+=`
                 <div class="${gridSize}">
-                <a href="${news.href}" id="news${news.id}" class="news" title="${news.head}" style="background: linear-gradient(0, ${news.color}, transparent 40%),url(${news.img}) center / cover no-repeat;">
-                    <div class="news__img"></div>
-                    <h4 class="news__head">${news.head}</h4>
-                </a>
+                    <a href="${news.href}" id="news${news.id}" class="news" title="${news.head}" style="background: linear-gradient(0, ${news.color}, transparent 40%),url(${news.img}) center / cover no-repeat;">
+                        <div class="news__img"></div>
+                        <h4 class="news__head">${news.head}</h4>
+                    </a>
                 </div>`
+            slideDotContainer.innerHTML+=`<button value=${index} class="slide-dot"></button>`
         });
+        newsSlide.innerHTML+=newsSlidehtml
         newsContainer.innerHTML+=newsContainerhtml
         newsList.innerHTML+=newsListhtml
+
+        var slide=0
+        const nextSlide=document.querySelector('.slide-direction.next')
+        const lastSlide=document.querySelector('.slide-direction.last')
+        const newsSlideItems=document.querySelectorAll('.news-slide__item')
+        const slideDots=document.querySelectorAll('.slide-dot')
+        slideDots[slide].classList.add('open')
+        function changeSlide(num){
+            slideDots[slide].classList.remove('open')
+            slide+=num
+            slide=(slide+maxSlide)%maxSlide
+            for(var newsSlideItem of newsSlideItems){
+                newsSlideItem.style=`transform: translateX(${-100*(slide)}%)`
+            }
+            slideDots[slide].classList.add('open')
+            // console.log(slideDots[slide].value)
+        }
+        nextSlide.onclick=()=>{changeSlide(1)}
+        lastSlide.onclick=()=>{changeSlide(-1)}
+        var mouseInSlide=false
+        const SlideContainer=document.querySelector('.slide-container')
+        SlideContainer.onmouseover=()=>{mouseInSlide=true}
+        SlideContainer.onmouseout=()=>{mouseInSlide=false}
+        setInterval(()=>{if(!mouseInSlide)changeSlide(1)},4000)
+        slideDotContainer.onclick=(e)=>{if(e.target.value!=undefined)changeSlide(e.target.value-slide)}
+        
     })
     .catch(function(fail){
         alert("Lỗi: news",fail)
@@ -72,3 +114,4 @@ searchList.onmousedown=function(e){
     e.preventDefault();
     searchInput.value=e.target.innerText
 }
+

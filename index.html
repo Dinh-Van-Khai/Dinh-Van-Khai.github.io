@@ -57,15 +57,13 @@
             <div class="grid">
                 <div class=" grid__row">
                     <div class="grid__col-9 tablet__col-full mobile__col-full">
-                        <div class="grid__row new-container">
-                            <div class="grid__col-full ">
-                                <a href="" id="my-news" class="news">
-                                    <div class="news__img"></div>
-                                    <h4 class="news__head">Abc abc abc abc abc</h4>
-                                </a>
-                            </div>
-                            
+                        <div class="grid__row slide-container">
+                            <div class="news-slide"></div>
+                            <div class="slide-direction last"><i class="fa-solid fa-chevron-left"></i></div>
+                            <div class="slide-direction next"><i class="fa-solid fa-chevron-right"></i></div>
+                            <div class="slide-dot__container"></div>
                         </div>
+                        <div class="grid__row new-container"></div>
                     </div>
                     <div class="grid__col-3 tablet__col-6 mobile__col-full">
                         <aside>
@@ -147,7 +145,7 @@
 
             function isShow(clickWhats,showWhat){
                 for(const clickWhat of clickWhats){
-                    clickWhat.addEventListener('click',function(){showWhat.classList.add('open');console.log('abc')} )
+                    clickWhat.addEventListener('click',function(){showWhat.classList.add('open')} )
                 }
             }
             function isClose(clickWhats,closeWhat){

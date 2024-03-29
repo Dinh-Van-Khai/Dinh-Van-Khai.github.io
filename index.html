@@ -4,33 +4,17 @@
         <title>Test page</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="./assets/img/logo.jpg" type="image/x-icon">
+        <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
         <link rel="stylesheet" href="./assets/css/style.css">
         <link rel="stylesheet" href="./assets/fontawesome-free-6.2.0-web/css/all.min.css">
     </head>
     
     <body>
         <header>
-            <a href="index.html">
-                <img src="/assets/img/logo.jpg" alt="LOGO">
-                <h1>Test page</h1>
-            </a>
-        </header>
-        
-        <nav>
-            <div class="menu">
-                <input type="checkbox" name="" id="hide-menu__check">
-                <label for="hide-menu__check" class="hide-menu__overlay"></label>
-                <ul class="hide-menu__list">
-                    <li class="hide-menu__item hide-menu__item--action"><a href=""><i class="fa-solid fa-house"></i>Home</a></li>
-                    <li class="hide-menu__item "><a href=""><i class="fa-solid fa-user-graduate"></i>About me</a></li>
-                    <li class="hide-menu__item "><a href=".\data\CV.pdf" target="_blank"><i class="fa-regular fa-address-card"></i>My CV</a></li>
-                    <li class="hide-menu__item "><a href="https://github.com/Dinh-Van-Khai/Dinh-Van-Khai.github.io" target="_blank"><i class="fa-brands fa-github"></i>Sources code</a></li>
-                    <li class="hide-menu__item "><a href=""><i class="fa-solid fa-house"></i>Home</a></li>                                                      
-                </ul>
-                <label for="hide-menu__check" class="button">
-                    <i class="fa-solid fa-list"></i>
-                </label>
+            <div class="grid header-container">
+                <a class="logo" href="index.html">
+                    <div class="logo-img"></div>
+                </a>
                 <div class="search-container">
                     <div class="search">
                         <input id="search__input" type="search" name="search" placeholder="Search...">
@@ -39,31 +23,30 @@
                     <ul class="search__list"></ul>
                     <div class="aft"></div>
                 </div>
+                <nav>
+                    <ul class="nav__list">
+                        <li class="nav__item nav__item--action"><a href=""><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+                        <li class="nav__item "><a href="./about-me"><i class="fa-solid fa-user-graduate"></i><span>About me</span></a></li>
+                        <li class="nav__item "><a href="https://github.com/Dinh-Van-Khai/Dinh-Van-Khai.github.io" target="_blank"><i class="fa-brands fa-github"></i><span>Sources code</span></a></li>
+                    </ul>
+                    <div class="nav-button">
+                        <i class="fa-solid fa-list"></i>
+                    </div>
+                </nav>
             </div>
-
-            <input type="checkbox" name="" id="hide-sign__check">
-            <label for="hide-sign__check" class="hide-sign__button">
-                <i class="fa-solid fa-sort-down"></i>
-            </label>
-            <label for="hide-sign__check" class="hide-sign__overlay"></label>
-            <ul class="right">
-                <li class="js-sign-in"><label for="hide-sign__check">Sign in</label></li>
-                <li class="js-sign-up"><label for="hide-sign__check">Sign up</label></li>
-            </ul>
-            
-        </nav>
+        </header>
         
         <div id="conten" class="container">
             <div class="grid">
-                <div class=" grid__row">
+                <div class="grid__row slide-container">
+                    <div class="news-slide"></div>
+                    <div class="slide-direction last"><i class="fa-solid fa-chevron-left"></i></div>
+                    <div class="slide-direction next"><i class="fa-solid fa-chevron-right"></i></div>
+                    <div class="slide-dot__container"></div>
+                </div>
+                <div class="grid__row">
                     <div class="grid__col-9 tablet__col-full mobile__col-full">
-                        <div class="grid__row slide-container">
-                            <div class="news-slide"></div>
-                            <div class="slide-direction last"><i class="fa-solid fa-chevron-left"></i></div>
-                            <div class="slide-direction next"><i class="fa-solid fa-chevron-right"></i></div>
-                            <div class="slide-dot__container"></div>
-                        </div>
-                        <div class="grid__row new-container"></div>
+                        <div class="grid__row news-container"></div>
                     </div>
                     <div class="grid__col-3 tablet__col-6 mobile__col-full">
                         <aside>
@@ -81,96 +64,13 @@
             </div>
         </div>
 
-        
-        
-        
         <footer id="footer">
             <div class="grid">
-                abc
+                
             </div>
         </footer>
 
-        <div class="modal-sign-up modal">
-            <div class="modal__overlay"></div>
-            <div class="modal__body">
-                <form action="" class="auth">
-                    <div class="auth__header">
-                        <h3 class="auth__heading">Đăng ký</h3>
-                        <span class="auth__switch js-sign-in js-sign-close">Đăng nhập</span>
-                    </div>
-                    <div class="auth__form">
-                        <input type="text" required class="auth__input" placeholder="Tên đăng nhập">
-                        <input type="password" required class="auth__input"placeholder="Mật khẩu">
-                        <input type="password" required class="auth__input"placeholder="Nhập lại mật khẩu">
-                    </div>
-                    <div class="auth__aside">
-                        <input type="checkbox" required>
-                        <p class="auth__aside-text">
-                            Tôi đồng ý với 
-                            <a href="" class="auth__aside-link">Điều khoản dịch vụ</a>
-                        </p>
-                    </div>
-                    <div class="auth__controls">
-                        <button class="auth__btn js-sign-close">Trở lại</button>
-                        <input type="submit" class="auth__btn auth__btn--primary" value="Đăng ký">
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="modal-sign-in modal">
-            <div class="modal__overlay"></div>
-            <div class="modal__body">
-                <form action="" class="auth">
-                    <div class="auth__header">
-                        <h3 class="auth__heading">Đăng nhập</h3>
-                        <span class="auth__switch js-sign-up js-sign-close">Đăng ký</span>
-                    </div>
-                    <div class="auth__form">
-                        <input type="text" required class="auth__input" placeholder="Tên đăng nhập">
-                        <input type="password" required class="auth__input"placeholder="Mật khẩu">
-                    </div>
-                    <div class="auth__aside">
-                        <a href="" class="auth__aside-link auth__aside-link--forgot-pw">Quên mật khẩu?</a>
-                    </div>
-                    <div class="auth__controls">
-                        <button class="auth__btn js-sign-close">Trở lại</button>
-                        <input type="submit" class="auth__btn auth__btn--primary" value="Đăng nhập">
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <script>
-
-            function isShow(clickWhats,showWhat){
-                for(const clickWhat of clickWhats){
-                    clickWhat.addEventListener('click',function(){showWhat.classList.add('open')} )
-                }
-            }
-            function isClose(clickWhats,closeWhat){
-                for(const clickWhat of clickWhats){
-                    clickWhat.addEventListener('click',function(){closeWhat.classList.remove('open')})
-                }
-            }
-
-            const signIns = document.querySelectorAll('.js-sign-in')
-            const signUps = document.querySelectorAll('.js-sign-up')
-            const signInCloses = document.querySelectorAll('.modal-sign-in .js-sign-close')
-            const signUpCloses = document.querySelectorAll('.modal-sign-up .js-sign-close')
-            const modalSignIn = document.querySelector('.modal-sign-in')
-            const modalSignUp = document.querySelector('.modal-sign-up')
-
-            const aside = document.querySelector('aside')
-            const asideButton = document.querySelector('.aside__button')
-            asideButton.addEventListener('click',function(){aside.classList.toggle('open')})
-            aside.addEventListener('click',function(){aside.classList.toggle('open')})
-
-            isShow(signIns,modalSignIn)
-            isShow(signUps,modalSignUp)
-            isClose(signInCloses,modalSignIn)
-            isClose(signUpCloses,modalSignUp)
-        </script>
-        <script src="./assets/js/news.js"></script>
+        <script src="/assets/js/fetch.js"></script>
+        <script src="/assets/js/action.js"></script>
     </body>
 </html>

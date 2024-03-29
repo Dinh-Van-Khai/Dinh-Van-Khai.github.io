@@ -1,5 +1,5 @@
 const newsSlide=document.querySelector('.news-slide')
-const newsContainer=document.querySelector('.new-container')
+const newsContainer=document.querySelector('.news-container')
 const newsList=document.querySelector('.aside__item--news-list')
 const slideDotContainer=document.querySelector('.slide-dot__container')
 var maxSlide=0;
@@ -11,6 +11,7 @@ fetch("../data/news.json")
         var newsSlidehtml=``
         var newsListhtml=``
         var newsContainerhtml=``
+        var slideDotContainerhtml=``
         json.forEach((news,index) => {
             var gridSize=''
             switch(news.size){
@@ -45,17 +46,19 @@ fetch("../data/news.json")
                         <h4 class="news__head">${news.head}</h4>
                     </a>
                 </div>`
-            slideDotContainer.innerHTML+=`<button value=${index} class="slide-dot"></button>`
+            slideDotContainerhtml+=`<button value=${index} class="slide-dot"></button>`
         });
-        newsSlide.innerHTML+=newsSlidehtml
-        newsContainer.innerHTML+=newsContainerhtml
-        newsList.innerHTML+=newsListhtml
+        newsSlide.innerHTML=newsSlidehtml
+        newsContainer.innerHTML=newsContainerhtml
+        newsList.innerHTML=newsListhtml
+        slideDotContainer.innerHTML=slideDotContainerhtml
 
         var slide=0
         const nextSlide=document.querySelector('.slide-direction.next')
         const lastSlide=document.querySelector('.slide-direction.last')
         const newsSlideItems=document.querySelectorAll('.news-slide__item')
         const slideDots=document.querySelectorAll('.slide-dot')
+        const SlideContainer=document.querySelector('.slide-container')
         slideDots[slide].classList.add('open')
         function changeSlide(num){
             slideDots[slide].classList.remove('open')
@@ -69,12 +72,11 @@ fetch("../data/news.json")
         }
         nextSlide.onclick=()=>{changeSlide(1)}
         lastSlide.onclick=()=>{changeSlide(-1)}
+        slideDotContainer.onclick=(e)=>{if(e.target.value!=undefined)changeSlide(e.target.value-slide)}
         var mouseInSlide=false
-        const SlideContainer=document.querySelector('.slide-container')
         SlideContainer.onmouseover=()=>{mouseInSlide=true}
         SlideContainer.onmouseout=()=>{mouseInSlide=false}
         setInterval(()=>{if(!mouseInSlide)changeSlide(1)},4000)
-        slideDotContainer.onclick=(e)=>{if(e.target.value!=undefined)changeSlide(e.target.value-slide)}
         
     })
     .catch(function(fail){
@@ -108,10 +110,3 @@ fetch("../data/search-list.json")
     .catch(function(fail){
         alert("Lỗi: search",fail)
     })
-searchInput.addEventListener('focus',function(){searchList.classList.add('open')})
-searchInput.addEventListener('blur',function(){searchList.classList.remove('open')})
-searchList.onmousedown=function(e){
-    e.preventDefault();
-    searchInput.value=e.target.innerText
-}
-
